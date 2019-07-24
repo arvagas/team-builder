@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 import Form from './Form'
 import { TeamList } from './TeamList'
 
-import './App.css'
+import Container from './styles/StyledContainer'
+import Card from './styles/StyledCard'
 
 function App() {
   const [team, setTeam] = useState(TeamList)
@@ -16,17 +17,17 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <Container>
       <Form team={team} setTeam={setTeam} memberToEdit={memberToEdit} setMemberToEdit={setMemberToEdit} editMember={editMember}/>
       {team.map((person, index) => (
-        <div key={index}>
+        <Card key={index}>
           <h1>{person.name}</h1>
           <h3>{person.email}</h3>
           <p>{person.role}</p>
           <button onClick={() => setMemberToEdit(person)}>Edit</button>
-        </div>
+        </Card>
       ))}
-    </div>
+    </Container>
   )
 }
 

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
+import FormCSS from './styles/StyledForm'
+import LegendCSS from './styles/StyledLegend'
+
 const Form = ({team, setTeam, memberToEdit, setMemberToEdit, editMember}) => {
     const [user, setUser] = useState({name:'', email:'', role:''})
 
@@ -26,24 +29,24 @@ const Form = ({team, setTeam, memberToEdit, setMemberToEdit, editMember}) => {
     },[memberToEdit])
 
     return (
-        <form onSubmit={event => handleSubmit(event)}>
-            <legend>{memberToEdit === null ? `Add` : `Edit`} Team Member</legend>
+        <FormCSS onSubmit={event => handleSubmit(event)}>
+            <LegendCSS>{memberToEdit === null ? `Add` : `Edit`} Team Member</LegendCSS>
             <label>
                 Name:
-                <input type="text" name="name" placeholder='Name:' value={user.name} onChange={handleChange}/>
+                <input type="text" name="name" placeholder='John Doe' value={user.name} onChange={handleChange}/>
             </label>
 
             <label>
                 Email:
-                <input type="text" name="email" placeholder='Email:' value={user.email} onChange={handleChange}/>
+                <input type="text" name="email" placeholder='example@gmail.com' value={user.email} onChange={handleChange}/>
             </label>
 
             <label>
                 Role:
-                <input type="text" name="role" placeholder='Role:' value={user.role} onChange={handleChange}/>
+                <input type="text" name="role" placeholder='Supreme Overlord' value={user.role} onChange={handleChange}/>
             </label>
             <button>Submit</button>
-        </form>
+        </FormCSS>
     )
 }
 
