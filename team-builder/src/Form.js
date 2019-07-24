@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 
-const Form = () => {
+const Form = ({team, setTeam}) => {
     const [user, setUser] = useState({name:'', email:'', role:''})
 
     function handleSubmit(event) {
         event.preventDefault()
+        setTeam([...team, user])
     }
 
     function handleChange(event) {

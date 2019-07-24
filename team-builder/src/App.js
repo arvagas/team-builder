@@ -1,54 +1,60 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+
+import Form from './Form'
+import './App.css'
 
 function App() {
   const [team, setTeam] = useState([
   {
     name: 'Adnan',
-    placeholder: 'yes',
-  },
-  {
-    name: 'Arvin',
-    placeholder: 'yes',
+    email: 'adnan@lambda.com',
+    role: 'Front-End',
   },
   {
     name: 'Darien',
-    placeholder: 'yes',
+    email: 'darien@lambda.com',
+    role: 'UI',
   },
   {
     name: 'Jade',
-    placeholder: 'yes',
+    email: 'jade@lambda.com',
+    role: 'Back-End',
   },
   {
     name: 'Joshua',
-    placeholder: 'yes',
+    email: 'joshua@lambda.com',
+    role: 'Front-End',
   },
   {
     name: 'Landry',
-    placeholder: 'yes',
+    email: 'landry@lambda.com',
+    role: 'Front-End',
   },
   {
     name: 'Luis',
-    placeholder: 'yes',
-  },
-  {
-    name: 'Mike',
-    placeholder: 'yes',
+    email: 'luis@lambda.com',
+    role: 'Back-End',
   },
   {
     name: 'Zachary',
-    placeholder: 'yes',
+    email: 'zachary@lambda.com',
+    role: 'Back-End',
   },
 ])
 
   return (
     <div className="App">
-      {team.map(person => (
-        <div>{person.name}</div>
+      <Form team={team} setTeam={setTeam} />
+      {console.log('Team: ', team)}
+      {team.map((person, index) => (
+        <div key={person.name}>
+          <h1>{person.name}</h1>
+          <h3>{person.email}</h3>
+          <p>{person.role}</p>
+        </div>
       ))}
     </div>
-  );
+  )
 }
 
 export default App;
