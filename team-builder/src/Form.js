@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react'
 
 const Form = ({team, setTeam, memberToEdit, setMemberToEdit, editMember}) => {
     const [user, setUser] = useState({name:'', email:'', role:''})
-    const [isEditing, setIsEditing] = useState(false)
 
     function handleSubmit(event) {
         event.preventDefault()
-        if (!isEditing) {
+        if (memberToEdit === null) {
             setTeam([...team, user])
             setUser({name:'', email:'', role:''})
         }
@@ -14,7 +13,6 @@ const Form = ({team, setTeam, memberToEdit, setMemberToEdit, editMember}) => {
             editMember(user)
             setMemberToEdit(null)
             setUser({name:'', email:'', role:''})
-            setIsEditing(false)
         }
     }
 
@@ -24,15 +22,12 @@ const Form = ({team, setTeam, memberToEdit, setMemberToEdit, editMember}) => {
     }
 
     useEffect(() => {
-        if (memberToEdit !== null) {
-            setIsEditing(true)
-            setUser(memberToEdit)
-        }
+        if (memberToEdit !== null) setUser(memberToEdit)
     },[memberToEdit])
 
     return (
         <form onSubmit={event => handleSubmit(event)}>
-            <legend>Add Team Member</legend>
+            <legend>{memberToEdit === null ? `Add` : `Edit`} Team Member</legend>
             <label>
                 Name:
                 <input type="text" name="name" placeholder='Name:' value={user.name} onChange={handleChange}/>

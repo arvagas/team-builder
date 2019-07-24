@@ -11,17 +11,13 @@ function App() {
 
   function editMember(user) {
     team.map((person, index) => {
-      if (person !== memberToEdit) return
-      else {
-        team[index] = user
-      }
+      if (person === memberToEdit) team[index] = user
     })
   }
 
   return (
     <div className="App">
       <Form team={team} setTeam={setTeam} memberToEdit={memberToEdit} setMemberToEdit={setMemberToEdit} editMember={editMember}/>
-      {console.log('Team: ', team)}
       {team.map((person, index) => (
         <div key={index}>
           <h1>{person.name}</h1>
