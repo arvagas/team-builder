@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from 'react'
 
-const Form = ({team, setTeam, memberToEdit}) => {
+const Form = ({team, setTeam, memberToEdit, setMemberToEdit, editMember}) => {
     const [user, setUser] = useState({name:'', email:'', role:''})
+    const [isEditing, setIsEditing] = useState(false)
 
     function handleSubmit(event) {
         event.preventDefault()
-        setTeam([...team, user])
+        if (!isEditing) {
+            setTeam([...team, user])
+            setUser({name:'', email:'', role:''})
+        }
+        else {
+            editMember(user)
+            setMemberToEdit(null)
+            setUser({name:'', email:'', role:''})
+            setIsEditing(false)
+        }
     }
 
     function handleChange(event) {
@@ -14,8 +24,11 @@ const Form = ({team, setTeam, memberToEdit}) => {
     }
 
     useEffect(() => {
-        if (memberToEdit !== null) setUser(memberToEdit)
-    })
+        if (memberToEdit !== null) {
+            setIsEditing(true)
+            setUser(memberToEdit)
+        }
+    },[memberToEdit])
 
     return (
         <form onSubmit={event => handleSubmit(event)}>

@@ -9,12 +9,21 @@ function App() {
   const [team, setTeam] = useState(TeamList)
   const [memberToEdit, setMemberToEdit] = useState(null)
 
+  function editMember(user) {
+    team.map((person, index) => {
+      if (person !== memberToEdit) return
+      else {
+        team[index] = user
+      }
+    })
+  }
+
   return (
     <div className="App">
-      <Form team={team} setTeam={setTeam} memberToEdit={memberToEdit}/>
+      <Form team={team} setTeam={setTeam} memberToEdit={memberToEdit} setMemberToEdit={setMemberToEdit} editMember={editMember}/>
       {console.log('Team: ', team)}
-      {team.map(person => (
-        <div key={person.name}>
+      {team.map((person, index) => (
+        <div key={index}>
           <h1>{person.name}</h1>
           <h3>{person.email}</h3>
           <p>{person.role}</p>
