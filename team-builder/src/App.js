@@ -7,11 +7,11 @@ import './App.css'
 
 function App() {
   const [team, setTeam] = useState(TeamList)
-  const [memberToEdit, setMemberToEdit] = useState()
+  const [memberToEdit, setMemberToEdit] = useState(null)
 
   return (
     <div className="App">
-      <Form team={team} setTeam={setTeam} />
+      <Form team={team} setTeam={setTeam} memberToEdit={memberToEdit}/>
       {console.log('Team: ', team)}
       {team.map(person => (
         <div key={person.name}>

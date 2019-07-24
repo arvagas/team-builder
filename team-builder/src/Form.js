@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-const Form = ({team, setTeam}) => {
+const Form = ({team, setTeam, memberToEdit}) => {
     const [user, setUser] = useState({name:'', email:'', role:''})
 
     function handleSubmit(event) {
@@ -12,6 +12,10 @@ const Form = ({team, setTeam}) => {
         const updatedUser = { ...user, [event.target.name]: event.target.value }
         setUser(updatedUser)
     }
+
+    useEffect(() => {
+        if (memberToEdit !== null) setUser(memberToEdit)
+    })
 
     return (
         <form onSubmit={event => handleSubmit(event)}>
