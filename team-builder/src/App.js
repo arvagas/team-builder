@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 
-import Form from './Form'
-import { TeamList } from './TeamList'
+import Form from './components/Form'
+import TeamSelect from './components/TeamSelect'
+import { Lambda, Arvingers } from './data/TeamList'
 
 import Container from './styles/StyledContainer'
 import Card from './styles/StyledCard'
 
 function App() {
-  const [team, setTeam] = useState(TeamList)
+  const [teamList, setTeamList] = useState([Lambda, Arvingers])
+  const [team, setTeam] = useState(Lambda)
   const [memberToEdit, setMemberToEdit] = useState(null)
 
   function editMember(user) {
@@ -36,6 +38,7 @@ function App() {
           <button onClick={() => setMemberToEdit(person)}>Edit</button>
         </Card>
       ))}
+      <TeamSelect teamList={teamList}/>
     </Container>
   )
 }

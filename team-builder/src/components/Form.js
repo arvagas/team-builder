@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
-import FormCSS from './styles/StyledForm'
-import LegendCSS from './styles/StyledLegend'
+import FormCSS from '../styles/StyledForm'
+import LegendCSS from '../styles/StyledLegend'
 
 const Form = ({team, setTeam, memberToEdit, setMemberToEdit, editMember}) => {
     const [user, setUser] = useState({name:'', email:'', role:''})

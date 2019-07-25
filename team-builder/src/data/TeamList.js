@@ -1,4 +1,4 @@
-export const TeamList = [
+export const Lambda = [
     {
       name: 'Adnan',
       email: 'adnan@lambda.com',
@@ -34,4 +34,22 @@ export const TeamList = [
       email: 'zachary@lambda.com',
       role: 'Back-End',
     },
+]
+
+export const Arvingers = [
+  {
+    name: 'Arvin',
+    email: 'arvin@arvingers.com',
+    role: 'Front Dude',
+  },
+  {
+    name: 'Arvin Man',
+    email: 'arvinman@arvingers.com',
+    role: 'Playboy Billionaire',
+  },
+  {
+    name: 'Captain Arvinrica',
+    email: 'caparv@arvingers.com',
+    role: 'Man out of Time',
+  },
 ]
