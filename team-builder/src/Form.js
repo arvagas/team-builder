@@ -38,17 +38,17 @@ const Form = ({team, setTeam, memberToEdit, setMemberToEdit, editMember}) => {
             <LegendCSS>{memberToEdit === null ? `Add` : `Edit`} Team Member</LegendCSS>
             <label>
                 Name:
-                <input type="text" name="name" placeholder='John Doe' value={user.name} onChange={handleChange}/>
+                <input type="text" name="name" placeholder='John Doe' value={user.name} onChange={handleChange} required/>
             </label>
 
             <label>
                 Email:
-                <input type="text" name="email" placeholder='example@gmail.com' value={user.email} onChange={handleChange}/>
+                <input type="email" name="email" placeholder='example@gmail.com' value={user.email} onChange={handleChange} required/>
             </label>
 
             <label>
                 Role:
-                <input type="text" name="role" placeholder='Supreme Overlord' value={user.role} onChange={handleChange}/>
+                <input type="text" name="role" placeholder='Supreme Overlord' value={user.role} onChange={handleChange} required/>
             </label>
             <button>Submit</button>
         </FormCSS>
