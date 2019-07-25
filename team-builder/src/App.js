@@ -10,15 +10,15 @@ function App() {
   const [team, setTeam] = useState(TeamList)
   const [memberToEdit, setMemberToEdit] = useState(null)
 
-   
   function editMember(user) {
-    // For each person in team, check to see if they match memberToEdit
+    // For each person in team, check to see if they match memberToEdit (we check memberToEdit because it contains the original values before data is edited in form)
+    // Grab the index as well to know the location of person in array
     team.map((person, index) => {
       if (person === memberToEdit) {
         // If true, create a copy of team; where person was matched, have its place equal to user; setTeam as the copy of team with edits
-        const copy = team
-        copy[index] = user
-        setTeam(copy)
+        const copyTeam = [...team]
+        copyTeam[index] = user
+        setTeam(copyTeam)
       }
     })
   }
