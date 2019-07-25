@@ -9,11 +9,15 @@ const Form = ({team, setTeam, memberToEdit, setMemberToEdit, editMember}) => {
     function handleSubmit(event) {
         event.preventDefault()
         if (memberToEdit === null) {
+            // setTeam grabs ALL of the old team data, and then appends new user
             setTeam([...team, user])
+            // Resets user inputs 
             setUser({name:'', email:'', role:''})
         }
         else {
+            // Runs function from App.js
             editMember(user)
+            // Resets memberToEdit to default value of null, reset user inputs
             setMemberToEdit(null)
             setUser({name:'', email:'', role:''})
         }
@@ -25,6 +29,7 @@ const Form = ({team, setTeam, memberToEdit, setMemberToEdit, editMember}) => {
     }
 
     useEffect(() => {
+        // If there is something inside memberToEdit other than null, user inputs are filled with data from memberToEdit
         if (memberToEdit !== null) setUser(memberToEdit)
     },[memberToEdit])
 
